@@ -90,7 +90,7 @@ public class afiliadoController {
 	
 		
 	    //10/10/2022
-		@GetMapping("/afiliado/validador/{tipoId}")
+		@GetMapping("/afiliacion/validador/{tipoId}")
 		public Mono<ResponseEntity<Mono<String>>> testGet(@PathVariable("tipoId") String tipoId) {
 			final long dateStarted = System.currentTimeMillis();
 			//?/server
