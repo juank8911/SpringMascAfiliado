@@ -1,0 +1,34 @@
+#identificacion.CO1N=NIT
+#identificacion.CO1C=C\u00e9dula De Ciudadan\u00eda
+#identificacion.CO1E=Cedula Extranjer\u00eda       
+#identificacion.CO1T=Tarjeta Identidad          
+#identificacion.CO1L=Registro Civil             
+#identificacion.CO1P=Pasaporte              
+#identificacion.CO1D=Carnet Diplomatico           
+
+identificacion:
+  CO1N: NIT
+  CO1C: C\u00e9dula De Ciudadan\u00eda
+  CO1E: Cedula Extranjer\u00eda
+  CO1T: Tarjeta Identidad      
+  CO1L: Registro Civil         
+  CO1P: Pasaporte              
+  CO1D: Carnet Diplomatico  
+  
+  
+  apigee:
+#  url: https://colsubsidio-prod.apigee.net
+  url: https://colsubsidio-test.apigee.net
+  urlMock: http://www.mocky.io/v2/
+  token:
+    url: /oauth/client_credential/accesstoken
+#    clienteId: 9ZajtAJ3i9BLMDri8UxTaQTsZFv47oo8
+    clienteId: 5A0amJxdlqDKntk1HbMAW7IxNrOW2026
+#    clienteSecreto: WHIaAwMCiMwrvZFp
+    clienteSecreto: A3Wtl1gzqXUcM5rQ
+    maxTimeInMillis: 300000 #300000 millis = 5 minutes
+  path:
+    auth: /oauth/client_credential/accesstoken
+    logger: /api/v1/tecnologia/logger
+    method: POST   	 
+ 
