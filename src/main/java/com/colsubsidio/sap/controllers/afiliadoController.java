@@ -86,31 +86,6 @@ public class afiliadoController {
 	}
 	
 	
-	public Mono<String> obtainSecuredResource() {
-		
-	    Mono<String> resource = client.post()	    		
-	      .uri("localhost:8085/oauth/token")
-	      .header("Authorization", "Basic " + {TOKEN_HERE})
-	      .body(BodyInserters.fromFormData("grant_type", "client_credentials"))
-	      .retrieve()
-	      .bodyToMono(JsonNode.class)
-	      .flatMap(tokenResponse -> {
-	          String accessTokenValue = tokenResponse.get("access_token")
-	            .textValue();
-	          return client.get()
-	            .uri("localhost:8084/retrieve-resource")
-	            .headers(h -> h.setBearerAuth(accessTokenValue))
-	            .retrieve()
-	            .bodyToMono(String.class);
-	        });
-	    return resource.map(res ->
-	      "Retrieved the resource using a manual approach: " + res);
-	
-	
-	
-	
-	
-	}
 	
 	
 		
