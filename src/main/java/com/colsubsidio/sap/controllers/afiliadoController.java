@@ -90,15 +90,17 @@ public class afiliadoController {
 	
 		
 	    //10/10/2022
-		@GetMapping("/afiliacion/validador/{tipoId}")
-		public Mono<ResponseEntity<Mono<String>>> testGet(@PathVariable("tipoId") String tipoId) {
+		@GetMapping("afiliacion/{tipoId}/{numeroId}")
+		public Mono<ResponseEntity<Mono<String>>> testGet(@PathVariable("tipoId") String tipoId, @PathVariable("numeroId") String numeroId) {
 			final long dateStarted = System.currentTimeMillis();
 			//?/server
-			WebClient webClient = WebClient.create(urlApi+"/afiliacion/validador");
-			Mono<ClientResponse> respuesta = webClient.get().uri("?queryParam={name}", tipoId).exchange();
+			WebClient webClient = WebClient.create(urlApi+"/afiliacion");
+			Mono<ClientResponse> respuesta = webClient.get().uri("?queryParam={name}", tipoId).exchangeToMono(null)
+			Mono<ClientResponse> respuesta2 = webClient.get().uri("?queryParam={name}", numeroId).exchange();
 			Mono<ClientResponse> respuesta1 = webClient.get().uri("?queryParam={name}","SPEED".equals(tipoId)?"SPEED":"STOP").exchange();
+			Mono<ClientResponse> respuesta3 = webClient.get().uri("?queryParam={name}","SPEED".equals(numeroId)?"SPEED":"STOP").exchange();
 			
-			Mono<ResponseEntity<Mono<String>>> f1 = Mono.zip(respuesta, respuesta1)
+			Mono<ResponseEntity<Mono<String>>> f1 = Mono.zip(respuesta, respuesta2, respuesta1, respuesta3)
 			.map(t -> {
 				if (!t.getT1().statusCode().is2xxSuccessful()) {
 					return ResponseEntity.status(t.getT1().statusCode()).body(t.getT1().bodyToMono(String.class));
