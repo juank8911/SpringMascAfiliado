@@ -90,6 +90,8 @@ public class afiliadoController {
 	
 		
 	    //10/10/2022
+		// agregar autorizacion token beaber a los headers para poder hacer la peticion 
+		// solucionar Unable to identify proxy for host el error en postman
 		@GetMapping("/afiliacion/validador/{tipoId}")
 		public Mono<ResponseEntity<Mono<String>>> testGet(@PathVariable("tipoId") String tipoId) {
 			final long dateStarted = System.currentTimeMillis();
