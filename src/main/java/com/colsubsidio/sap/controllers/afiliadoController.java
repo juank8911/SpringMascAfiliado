@@ -90,19 +90,16 @@ public class afiliadoController {
 	
 		
 	    //10/10/2022
-<<<<<<< HEAD
+
 		// agregar autorizacion token beaber a los headers para poder hacer la peticion 
 		// solucionar Unable to identify proxy for host el error en postman
-		@GetMapping("/afiliacion/validador/{tipoId}")
-		public Mono<ResponseEntity<Mono<String>>> testGet(@PathVariable("tipoId") String tipoId) {
-=======
 		@GetMapping("afiliacion/{tipoId}/{numeroId}")
 		public Mono<ResponseEntity<Mono<String>>> testGet(@PathVariable("tipoId") String tipoId, @PathVariable("numeroId") String numeroId) {
->>>>>>> 520ab22e793221e3eff79b086b26c2d01b60ce7f
+
 			final long dateStarted = System.currentTimeMillis();
 			//?/server
 			WebClient webClient = WebClient.create(urlApi+"/afiliacion");
-			Mono<ClientResponse> respuesta = webClient.get().uri("?queryParam={name}", tipoId).exchangeToMono(null)
+			Mono<ClientResponse> respuesta = webClient.get().uri("?queryParam={name}", tipoId).exchangeToMono(null);
 			Mono<ClientResponse> respuesta2 = webClient.get().uri("?queryParam={name}", numeroId).exchange();
 			Mono<ClientResponse> respuesta1 = webClient.get().uri("?queryParam={name}","SPEED".equals(tipoId)?"SPEED":"STOP").exchange();
 			Mono<ClientResponse> respuesta3 = webClient.get().uri("?queryParam={name}","SPEED".equals(numeroId)?"SPEED":"STOP").exchange();
