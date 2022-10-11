@@ -27,9 +27,9 @@ public class TokenService {
     //@Value("${apigee.token.url}")
 	private String auth = "/oauth/client_credential/accesstoken";
     //@Value("${apigee.token.clienteId}")
-    private String clienteId = "5A0amJxdlqDKntk1HbMAW7IxNrOW2026";
+    private String clienteId = "sD68JKGm4GeAb8lFva22v7OgCBSXfcbj";
 	//@Value("${apigee.token.clienteSecreto}")
-	private String clienteSecreto = "A3Wtl1gzqXUcM5rQ";
+	private String clienteSecreto = "9yXLfPgaxBAYEGSl";
 	//@Value("${apigee.token.maxTimeInMillis}")
 	private Long maxTimeInMillis = (long) 300000;
 	

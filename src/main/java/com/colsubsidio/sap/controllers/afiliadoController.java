@@ -23,6 +23,7 @@ import reactor.core.publisher.Mono;
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
+import com.colsubsidio.sap.service.AfiliadoServcie;
 import com.colsubsidio.sap.service.TokenService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,56 +33,60 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@Slf4j
 public class afiliadoController {
 	
+	private AfiliadoServcie tok = new AfiliadoServcie();
 //	@Value("${apigee.token.url}")
 	private String urlApi = "https://colsubsidio-test.apigee.net";
-	private String urlafi = "/afiliacion/validador";
+	private String urlafi = "/api/v2/afiliacion/validador";
 //	  @Value("${apigee.token.url}")
 		private String auth = "/oauth/client_credential/accesstoken";
-		private String clienteId= "5A0amJxdlqDKntk1HbMAW7IxNrOW2026";
-		private String clienteSecreto= "A3Wtl1gzqXUcM5rQ";
+		private String clienteId= "sD68JKGm4GeAb8lFva22v7OgCBSXfcbj";
+		private String clienteSecreto= "9yXLfPgaxBAYEGSl";
 		//newCode falta url app server
 		final String urlServer="https://colsubsidio-test.apigee.net";
-	
 		
-	@GetMapping("/afiliados")
+	@CrossOrigin(origins = "http://localhost:4200")	
+	@GetMapping("/token")
 	public String getAfiliados()
 	{
 		System.out.println("prueba de token");
 		TokenService tk = new TokenService();
 		String tok = tk.getToken();
-		String uri = "?tipoId=CO1C&numeroId=1018497540";
-		RestTemplate restTemplate = new RestTemplate();
-		String result = restTemplate.getForObject(urlApi+uri, String.class);
-		return result;
+//		String result = restTemplate.getForObject(urlApi+uri, String.class);
+		return tok;
 	}
 	
-	@GetMapping("afiliado/{parametro}")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("afiliadoss/{parametro}")
     public String paginaComun(@PathVariable("parametro") String parametro,
             ModelMap model) {
 		
 		RestTemplate restTemplate = new RestTemplate();
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
         
-        UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(urlApi+urlafi+"tipoId="+parametro);
-
+        UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(urlApi+urlafi+"tipoId="+parametro+"&numeroId=1018497540");
+        HttpHeaders headers = new HttpHeaders();
+        TokenService tk = new TokenService();
+        String url = urlApi+urlafi+"?tipoId="+parametro;
+        headers.add(HttpHeaders.ACCEPT,"application/json");
+        headers.add(HttpHeaders.AUTHORIZATION,"Bearer "+tk.getToken());
+        HttpEntity<?> entity = new HttpEntity<Object>(headers);
+        HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         /*** SELECCIONAS LA PAGINA QUE QUIERAS MOSTRAR ***/
         model.addAttribute("datos", "Estos son datos!!!");
         
         
        
-        return "comun::" + uri.toString();
+        return url;
     }
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/afiliado")
 	public String getAfiliado()
 	{
 		
-		String uri = "https://jsonplaceholder.typicode.com/posts/1";
-		RestTemplate restTemplate = new RestTemplate();
-		String result = restTemplate.getForObject(uri, String.class);
+		String result =  tok.Apigafiliado();
 		return result;
 	}
 	
@@ -98,7 +103,7 @@ public class afiliadoController {
 
 			final long dateStarted = System.currentTimeMillis();
 			//?/server
-			WebClient webClient = WebClient.create(urlApi+"/afiliacion");
+			WebClient webClient = WebClient.create(urlApi+urlafi);
 			Mono<ClientResponse> respuesta = webClient.get().uri("?queryParam={name}", tipoId).exchangeToMono(null);
 			Mono<ClientResponse> respuesta2 = webClient.get().uri("?queryParam={name}", numeroId).exchange();
 			Mono<ClientResponse> respuesta1 = webClient.get().uri("?queryParam={name}","SPEED".equals(tipoId)?"SPEED":"STOP").exchange();
