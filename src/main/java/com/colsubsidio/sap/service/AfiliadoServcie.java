@@ -13,7 +13,8 @@ public class AfiliadoServcie {
 	
 	private TokenService tk = new TokenService();
 	private String urlApi = "https://colsubsidio-test.apigee.net";
-	private String UrlAf = "/api/afiliacion/validador";
+	private String UrlAf = "v2/api/afiliacion/validador/detalles";
+	
 	
 	public String Apigafiliado() {
 		
@@ -29,8 +30,8 @@ public class AfiliadoServcie {
 		
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
-								restTemlete.exchange(urlApi.toString(),HttpMethod.GET,entity,String.class);
-		return result.getBody();
+								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
+		return result.toString();
 	}
 
 }

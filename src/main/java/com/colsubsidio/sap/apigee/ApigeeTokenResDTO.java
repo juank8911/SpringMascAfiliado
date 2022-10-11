@@ -33,6 +33,9 @@ public class ApigeeTokenResDTO {
     private String expires_in;
     private String refresh_count;
     private String status;
+    
+    
+    
 	public String getRefresh_token_expires_in() {
 		return refresh_token_expires_in;
 	}
