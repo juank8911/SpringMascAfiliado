@@ -31,7 +31,7 @@ public class AfiliadoServcie {
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
-		return result.toString();
+		return result.getBody();
 	}
 
 }
