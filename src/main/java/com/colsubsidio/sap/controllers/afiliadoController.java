@@ -54,6 +54,7 @@ public class afiliadoController {
 		TokenService tk = new TokenService();
 		String tok = tk.getToken();
 //		String result = restTemplate.getForObject(urlApi+uri, String.class);
+		System.out.println(tok);
 		return tok;
 	}
 	
@@ -75,10 +76,7 @@ public class afiliadoController {
         HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         /*** SELECCIONAS LA PAGINA QUE QUIERAS MOSTRAR ***/
         model.addAttribute("datos", "Estos son datos!!!");
-        
-        
-       
-        return url;
+        	return url;
     }
 	
 	@CrossOrigin(origins = "http://localhost:4200")
