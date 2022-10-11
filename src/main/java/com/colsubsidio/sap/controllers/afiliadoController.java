@@ -20,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import reactor.core.publisher.Mono;
 
+import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
@@ -84,8 +85,8 @@ public class afiliadoController {
 	public String getAfiliado()
 	{
 		
-		String result =  tok.Apigafiliado();
-		return result;
+		ApigeeAfiliadoResDTO result =  tok.Apigafiliado();
+		return result.toString();
 	}
 	
 	
