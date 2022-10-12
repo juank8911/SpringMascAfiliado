@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 
 import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
+import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
 
 public class AfiliadoServcie {
 	
@@ -19,7 +20,7 @@ public class AfiliadoServcie {
 	private String UrlAf = "v2/api/afiliacion/validador/detalles";
 	
 	
-	public ApigeeAfiliadoResDTO Apigafiliado() {
+	public String Apigafiliado(String tipoid, String numeroId) {
 		
 		RestTemplate restTemlete = new RestTemplate();
 		restTemlete.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
@@ -32,10 +33,12 @@ public class AfiliadoServcie {
 		headers.setBearerAuth(tk.getToken());
 		
 		
-		HttpEntity<ApigeeAfiliadoResDTO> entity = new HttpEntity<ApigeeAfiliadoResDTO>(headers);
-		ResponseEntity<ApigeeAfiliadoResDTO> result =
-								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,ApigeeAfiliadoResDTO.class);
-		return result.getBody();
+		HttpEntity<ApigeeValidadorReq> entity = new HttpEntity<ApigeeValidadorReq>(headers);
+		ResponseEntity<String> result =
+								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
+		System.out.print("Servicesss /////////////////////");
+		System.out.print(result.getBody());
+		return result.toString();
 	}
 
 }
