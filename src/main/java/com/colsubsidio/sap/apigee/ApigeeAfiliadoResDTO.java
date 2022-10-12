@@ -16,7 +16,7 @@ import lombok.ToString;
 @Builder
 @Data
 public class ApigeeAfiliadoResDTO {
-	    private int estado;
+	    private String estado;
 	    private String mensaje;
 	   	   
 	    @JsonProperty("data.afiliado.bp")
