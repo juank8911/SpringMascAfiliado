@@ -1,4 +1,4 @@
-package com.colsubsidio.sap;
+package com.colsubsidio.sap.interfaces;
 
 public interface AfiliadoInterface {
 

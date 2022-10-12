@@ -9,11 +9,10 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
 import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
 
-public class AfiliadoServcie {
+public class AfiliadoServcie  {
 	
 	private TokenService tk = new TokenService();
 	private String urlApi = "https://colsubsidio-test.apigee.net";

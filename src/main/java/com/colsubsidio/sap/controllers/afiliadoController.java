@@ -1,6 +1,7 @@
 package com.colsubsidio.sap.controllers;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -36,6 +37,8 @@ import lombok.extern.slf4j.Slf4j;
 public class afiliadoController {
 	
 	private AfiliadoServcie tok = new AfiliadoServcie();
+	
+	@Autowired
 //	@Value("${apigee.token.url}")
 	private String urlApi = "https://colsubsidio-test.apigee.net";
 	private String urlafi = "/api/v2/afiliacion/validador";
