@@ -9,6 +9,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+
 import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 
 public class AfiliadoServcie {
@@ -29,6 +30,7 @@ public class AfiliadoServcie {
 		headers.setAccessControlAllowCredentials(true);
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.setBearerAuth(tk.getToken());
+		
 		
 		HttpEntity<ApigeeAfiliadoResDTO> entity = new HttpEntity<ApigeeAfiliadoResDTO>(headers);
 		ResponseEntity<ApigeeAfiliadoResDTO> result =
