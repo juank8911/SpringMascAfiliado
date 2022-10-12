@@ -16,11 +16,11 @@ public class AfiliadoServcie {
 	private String UrlAf = "v2/api/afiliacion/validador/detalles";
 	
 	
-	public String Apigafiliado() {
+	public String Apigafiliado(String tipoid, String numeroId) {
 		
 		RestTemplate restTemlete = new RestTemplate();
 		restTemlete.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-		UriComponentsBuilder url = UriComponentsBuilder.fromHttpUrl("https://colsubsidio-test.apigee.net/api/v2/afiliacion/validador?tipoId=CO1C&numeroId=1018497540");
+		UriComponentsBuilder url = UriComponentsBuilder.fromHttpUrl("https://colsubsidio-test.apigee.net/api/v2/afiliacion/validador?tipoId="+tipoid+"&numeroId="+numeroId);
 		
 		  //Agrega Headers a la peticion 
 		HttpHeaders headers = new HttpHeaders();

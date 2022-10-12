@@ -84,7 +84,7 @@ public class afiliadoController {
 	public String getAfiliado(@PathVariable("tipoid") String tipoid,@PathVariable("numeroId") String numeroId)
 	{
 		System.out.println(tipoid+" / "+numeroId);
-		String result =  tok.Apigafiliado();
+		String result =  tok.Apigafiliado(tipoid,numeroId);
 		System.out.println(result);
 		return result;
 	}
