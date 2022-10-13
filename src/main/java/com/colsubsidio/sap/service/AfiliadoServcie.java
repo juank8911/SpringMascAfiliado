@@ -38,6 +38,7 @@ public class AfiliadoServcie implements sapInterfaz {
 		return result.getBody();
 	}
 	
+	//
 	//tipo de id es CO1N
 	public String apiEmpresa(String numeroId)
 	{
