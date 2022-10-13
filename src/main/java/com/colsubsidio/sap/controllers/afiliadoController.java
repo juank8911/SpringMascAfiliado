@@ -45,6 +45,8 @@ public class afiliadoController {
 	
 
 	
+
+	
 	@CrossOrigin("http://localhost:4200/")
 	@GetMapping("/afiliado/{tipoid}/{numeroId}")
 	public String getAfiliado(@PathVariable("tipoid") String tipoid,@PathVariable("numeroId") String numeroId)
