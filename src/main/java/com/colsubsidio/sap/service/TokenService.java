@@ -11,15 +11,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
+import com.colsubsidio.sap.interfaz.IToken;
 
 
-@Component
-public class TokenService {
+//@Component
+@Service
+public class TokenService implements IToken{
 
     //@Value("${apigee.url}")
 //    private String urlApi = "https://colsubsidio-test.apigee.net";
@@ -48,6 +51,7 @@ public class TokenService {
 	private String token;
 	private LocalDateTime tokenDate;
 	
+	@Override
 	public String getToken() {
 		if (token == null) {
 			generateToken();
@@ -70,6 +74,7 @@ public class TokenService {
 		tokenDate = LocalDateTime.now();
 	}
 	
+	@Override
 	public ApigeeTokenResDTO postAccessToken(ApigeeTokenReqDTO request) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());

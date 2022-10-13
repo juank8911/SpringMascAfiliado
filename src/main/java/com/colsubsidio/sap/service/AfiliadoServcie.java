@@ -1,5 +1,6 @@
 package com.colsubsidio.sap.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,11 +12,15 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.colsubsidio.sap.interfaz.IAfiliado;
+import com.colsubsidio.sap.interfaz.IToken;
 
 @Service
 public class AfiliadoServcie implements IAfiliado {
 	
-	private TokenService tk = new TokenService();
+	@Autowired
+	private IToken tk;
+	
+	//private TokenService tk = new TokenService();
 //	private String urlApi = "https://colsubsidio-test.apigee.net";
 	private String urlApi = "https://colsubsidio-prod.apigee.net";
 	private String UrlAf = "/api/v2/afiliacion/validador";
