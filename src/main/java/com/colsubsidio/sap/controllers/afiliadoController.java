@@ -59,6 +59,7 @@ public class afiliadoController {
 	}
 	
 	
+	@CrossOrigin("http://localhost:4200/")
 	@GetMapping("/empresa/{numeroId}")
 	public String getEmpresa(@PathVariable("numeroId")String numeroId)
 	{
