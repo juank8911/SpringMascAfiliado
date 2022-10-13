@@ -46,7 +46,7 @@ public class afiliadoController {
 
 	
 
-	
+	//cedula ej CO1C y 1018497540
 	@CrossOrigin("http://localhost:4200/")
 	@GetMapping("/afiliado/{tipoid}/{numeroId}")
 	public String getAfiliado(@PathVariable("tipoid") String tipoid,@PathVariable("numeroId") String numeroId)
