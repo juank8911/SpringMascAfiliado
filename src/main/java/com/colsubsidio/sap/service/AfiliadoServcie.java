@@ -9,7 +9,9 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class AfiliadoServcie {
+import com.colsubsidio.sap.interfaz.sapInterfaz;
+
+public class AfiliadoServcie implements sapInterfaz {
 	
 	private TokenService tk = new TokenService();
 //	private String urlApi = "https://colsubsidio-test.apigee.net";

@@ -39,8 +39,8 @@ public class afiliadoController {
 	//cambiar a interface para consumir el servicio
 	private AfiliadoServcie tok = new AfiliadoServcie();
 	
-	@Autowired
-	private ApigeeAfiliadoResDTO afil;
+	/*@Autowired
+	private ApigeeAfiliadoResDTO afil;*/
 
 		
 
