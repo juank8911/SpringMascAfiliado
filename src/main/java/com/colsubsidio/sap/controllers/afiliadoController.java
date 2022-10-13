@@ -21,6 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import reactor.core.publisher.Mono;
 
+
 import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
@@ -38,7 +39,7 @@ public class afiliadoController {
 	
 	private AfiliadoServcie tok = new AfiliadoServcie();
 	
-	@Autowired
+
 //	@Value("${apigee.token.url}")
 	private String urlApi = "https://colsubsidio-test.apigee.net";
 	private String urlafi = "/api/v2/afiliacion/validador";
@@ -91,7 +92,7 @@ public class afiliadoController {
 		String result = tok.Apigafiliado((String) tipoid,numeroId);
 		System.out.println("resultado //////////////");
 		System.out.println(result);
-		return result.toString();
+		return result;
 	}
 	
 }
