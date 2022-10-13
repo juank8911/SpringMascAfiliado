@@ -25,7 +25,7 @@ import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
-import com.colsubsidio.sap.interfaz.sapInterfaz;
+import com.colsubsidio.sap.interfaz.IAfiliado;
 import com.colsubsidio.sap.service.AfiliadoServcie;
 import com.colsubsidio.sap.service.TokenService;
 
@@ -41,7 +41,7 @@ public class afiliadoController {
 	//private AfiliadoServcie tok = new AfiliadoServcie();
 	
 	@Autowired
-	private sapInterfaz afil;
+	private IAfiliado afil;
 	
 
 	

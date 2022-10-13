@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.colsubsidio.sap.interfaz.sapInterfaz;
+import com.colsubsidio.sap.interfaz.IAfiliado;
 
 @Service
-public class AfiliadoServcie implements sapInterfaz {
+public class AfiliadoServcie implements IAfiliado {
 	
 	private TokenService tk = new TokenService();
 //	private String urlApi = "https://colsubsidio-test.apigee.net";
