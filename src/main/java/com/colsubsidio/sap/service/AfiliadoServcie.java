@@ -12,9 +12,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class AfiliadoServcie {
 	
 	private TokenService tk = new TokenService();
-	private String urlApi = "https://colsubsidio-test.apigee.net";
-	private String UrlAf = "/v2/api/afiliacion/validador/detalles";
-	private String UrlEm = "/v2/afiliaciones/validadorempresas";
+//	private String urlApi = "https://colsubsidio-test.apigee.net";
+	private String urlApi = "https://colsubsidio-prod.apigee.net";
+	private String UrlAf = "/api/v2/afiliacion/validador";
+	private String UrlEm = "/api/v2/afiliaciones/validadorempresas";
+							
 	
 	
 	public String Apigafiliado(String tipoid, String numeroId) {

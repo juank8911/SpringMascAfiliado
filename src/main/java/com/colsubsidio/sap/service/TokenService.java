@@ -24,7 +24,7 @@ public class TokenService {
     //@Value("${apigee.url}")
 //    private String urlApi = "https://colsubsidio-test.apigee.net";
     //api en produccion
-    private String urlApi = "https://colsubsidio-prod.apigee.net/api/";
+    private String urlApi = "https://colsubsidio-prod.apigee.net";
     //@Value("${apigee.token.url}")
 	private String auth = "/oauth/client_credential/accesstoken";
 //    @Value("${apigee.token.clienteId}")
