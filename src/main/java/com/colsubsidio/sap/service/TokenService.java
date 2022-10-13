@@ -22,15 +22,20 @@ import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 public class TokenService {
 
     //@Value("${apigee.url}")
-    private String urlApi = "https://colsubsidio-test.apigee.net";
-    
+//    private String urlApi = "https://colsubsidio-test.apigee.net";
+    //api en produccion
+    private String urlApi = "https://colsubsidio-prod.apigee.net/api/";
     //@Value("${apigee.token.url}")
 	private String auth = "/oauth/client_credential/accesstoken";
-    @Value("${apigee.token.clienteId}")
-    private String clienteId ;
-//    = "sD68JKGm4GeAb8lFva22v7OgCBSXfcbj";
+//    @Value("${apigee.token.clienteId}")
+//    private String clienteId = "sD68JKGm4GeAb8lFva22v7OgCBSXfcbj";
+    //cliente id en produccion 
+    private String clienteId = "RLU3NUj0P3jEernbQJOg1iXPqasHAQHX";
+//    
 	//@Value("${apigee.token.clienteSecreto}")
-	private String clienteSecreto = "9yXLfPgaxBAYEGSl";
+//	private String clienteSecreto = "9yXLfPgaxBAYEGSl";
+//Cliente cliente Secreto en produccion
+	private String clienteSecreto = "V8ZAMt4NIsdySGPg";
 	//@Value("${apigee.token.maxTimeInMillis}")
 	private Long maxTimeInMillis = (long) 300000;
 	

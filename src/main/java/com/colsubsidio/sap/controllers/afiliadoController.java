@@ -33,52 +33,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 public class afiliadoController {
-	
-	private AfiliadoServcie tok = new AfiliadoServcie();
-//	@Value("${apigee.token.url}")
-	private String urlApi = "https://colsubsidio-test.apigee.net";
-	private String urlafi = "/api/v2/afiliacion/validador";
-//	  @Value("${apigee.token.url}")
-		private String auth = "/oauth/client_credential/accesstoken";
-		private String clienteId= "sD68JKGm4GeAb8lFva22v7OgCBSXfcbj";
-		private String clienteSecreto= "9yXLfPgaxBAYEGSl";
-		//newCode falta url app server
-		final String urlServer="https://colsubsidio-test.apigee.net";
-		
-	@CrossOrigin(origins = "http://localhost:4200")	
-	@GetMapping("/token")
-	public String getAfiliados()
-	{
-		System.out.println("prueba de token");
-		TokenService tk = new TokenService();
-		String tok = tk.getToken();
-//		String result = restTemplate.getForObject(urlApi+uri, String.class);
-		System.out.println(tok);
-		return tok;
-	}
-	
-	
-	@GetMapping("afiliadoss/{parametro}")
-    public String paginaComun(@PathVariable("parametro") String parametro,
-            ModelMap model) {
-		
-		RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-        
-        UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(urlApi+urlafi+"tipoId="+parametro+"&numeroId=1018497540");
-        HttpHeaders headers = new HttpHeaders();
-        TokenService tk = new TokenService();
-        String url = urlApi+urlafi+"?tipoId="+parametro;
-        headers.add(HttpHeaders.ACCEPT,"application/json");
-        headers.add(HttpHeaders.AUTHORIZATION,"Bearer "+tk.getToken());
-        HttpEntity<?> entity = new HttpEntity<Object>(headers);
-        HttpEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        /*** SELECCIONAS LA PAGINA QUE QUIERAS MOSTRAR ***/
-        model.addAttribute("datos", "Estos son datos!!!");
-        	return url;
-    }
-	
 
+	//cambiar a interface para consumir el servicio
+	private AfiliadoServcie tok = new AfiliadoServcie();
+
+		
+
+	
 	@CrossOrigin("http://localhost:4200/")
 	@GetMapping("/afiliado/{tipoid}/{numeroId}")
 	public String getAfiliado(@PathVariable("tipoid") String tipoid,@PathVariable("numeroId") String numeroId)
@@ -87,6 +48,14 @@ public class afiliadoController {
 		String result =  tok.Apigafiliado(tipoid,numeroId);
 		System.out.println(result);
 		return result;
+	}
+	
+	
+	@GetMapping("/empresa/{numeroId}")
+	public String getEmpresa(@PathVariable("numeroId")String numeroId)
+	{
+		//crear metodo para consumir de la api empresas
+		return "yyyy";
 	}
 	
 }

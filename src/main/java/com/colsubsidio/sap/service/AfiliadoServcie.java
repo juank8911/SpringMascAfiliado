@@ -13,16 +13,16 @@ public class AfiliadoServcie {
 	
 	private TokenService tk = new TokenService();
 	private String urlApi = "https://colsubsidio-test.apigee.net";
-	private String UrlAf = "v2/api/afiliacion/validador/detalles";
+	private String UrlAf = "/v2/api/afiliacion/validador/detalles";
+	private String UrlEm = "/v2/afiliaciones/validadorempresas";
 	
 	
 	public String Apigafiliado(String tipoid, String numeroId) {
 		
 		RestTemplate restTemlete = new RestTemplate();
 		restTemlete.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-		UriComponentsBuilder url = UriComponentsBuilder.fromHttpUrl("https://colsubsidio-test.apigee.net/api/v2/afiliacion/validador?tipoId="+tipoid+"&numeroId="+numeroId);
+		UriComponentsBuilder url = UriComponentsBuilder.fromHttpUrl(urlApi+UrlAf+"?tipoId="+tipoid+"&numeroId="+numeroId);
 		
-		  //Agrega Headers a la peticion 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccessControlAllowCredentials(true);
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -32,6 +32,12 @@ public class AfiliadoServcie {
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
 		return result.getBody();
+	}
+	
+	//tipo de id es CO1N
+	public String apiEmpresa(String numeroId)
+	{
+		return "ss";
 	}
 
 }
