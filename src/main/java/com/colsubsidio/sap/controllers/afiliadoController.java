@@ -1,6 +1,7 @@
 package com.colsubsidio.sap.controllers;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,6 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import reactor.core.publisher.Mono;
 
+import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
@@ -36,6 +38,9 @@ public class afiliadoController {
 
 	//cambiar a interface para consumir el servicio
 	private AfiliadoServcie tok = new AfiliadoServcie();
+	
+	@Autowired
+	private ApigeeAfiliadoResDTO afil;
 
 		
 
@@ -55,7 +60,11 @@ public class afiliadoController {
 	public String getEmpresa(@PathVariable("numeroId")String numeroId)
 	{
 		//crear metodo para consumir de la api empresas
-		return "yyyy";
+	//String afiliado = afil.getEmpresaPrincipal();
+		System.out.println("/empresa / "+numeroId);
+		String result =  tok.apiEmpresa(numeroId);
+		System.out.println(result);
+		return result;
 	}
 	
 }

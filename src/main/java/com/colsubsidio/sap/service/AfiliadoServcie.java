@@ -39,7 +39,19 @@ public class AfiliadoServcie {
 	//tipo de id es CO1N
 	public String apiEmpresa(String numeroId)
 	{
-		return "ss";
+		RestTemplate restTemlete = new RestTemplate();
+		restTemlete.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+		UriComponentsBuilder url = UriComponentsBuilder.fromHttpUrl(urlApi+UrlEm+"?tipoId=CO1N"+"&numeroId="+numeroId);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccessControlAllowCredentials(true);
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.setBearerAuth(tk.getToken());
+		
+		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		ResponseEntity<String> result =
+								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
+		return result.getBody();
 	}
 
 }
