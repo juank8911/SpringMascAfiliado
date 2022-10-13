@@ -6,11 +6,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.colsubsidio.sap.interfaz.sapInterfaz;
 
+@Service
 public class AfiliadoServcie implements sapInterfaz {
 	
 	private TokenService tk = new TokenService();
@@ -18,9 +20,9 @@ public class AfiliadoServcie implements sapInterfaz {
 	private String urlApi = "https://colsubsidio-prod.apigee.net";
 	private String UrlAf = "/api/v2/afiliacion/validador";
 	private String UrlEm = "/api/v2/afiliaciones/validadorempresas";
-							
 	
 	
+	@Override
 	public String Apigafiliado(String tipoid, String numeroId) {
 		
 		RestTemplate restTemlete = new RestTemplate();
@@ -40,6 +42,7 @@ public class AfiliadoServcie implements sapInterfaz {
 	
 	//
 	//tipo de id es CO1N
+	@Override
 	public String apiEmpresa(String numeroId)
 	{
 		RestTemplate restTemlete = new RestTemplate();

@@ -25,6 +25,7 @@ import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
+import com.colsubsidio.sap.interfaz.sapInterfaz;
 import com.colsubsidio.sap.service.AfiliadoServcie;
 import com.colsubsidio.sap.service.TokenService;
 
@@ -37,22 +38,24 @@ import lombok.extern.slf4j.Slf4j;
 public class afiliadoController {
 
 	//cambiar a interface para consumir el servicio
-	private AfiliadoServcie tok = new AfiliadoServcie();
+	//private AfiliadoServcie tok = new AfiliadoServcie();
 	
-	/*@Autowired
-	private ApigeeAfiliadoResDTO afil;*/
-
-		
+	@Autowired
+	private sapInterfaz afil;
+	
 
 	
 	@CrossOrigin("http://localhost:4200/")
 	@GetMapping("/afiliado/{tipoid}/{numeroId}")
 	public String getAfiliado(@PathVariable("tipoid") String tipoid,@PathVariable("numeroId") String numeroId)
 	{
+		
 		System.out.println(tipoid+" / "+numeroId);
-		String result =  tok.Apigafiliado(tipoid,numeroId);
+		String result =  afil.Apigafiliado(tipoid,numeroId);
 		System.out.println(result);
 		return result;
+		
+		
 	}
 	
 	
@@ -62,7 +65,7 @@ public class afiliadoController {
 		//crear metodo para consumir de la api empresas
 	//String afiliado = afil.getEmpresaPrincipal();
 		System.out.println("/empresa / "+numeroId);
-		String result =  tok.apiEmpresa(numeroId);
+		String result =  afil.apiEmpresa(numeroId);
 		System.out.println(result);
 		return result;
 	}
