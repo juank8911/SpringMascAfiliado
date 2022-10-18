@@ -14,6 +14,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.colsubsidio.sap.interfaz.IAfiliado;
 import com.colsubsidio.sap.interfaz.IToken;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 @Service
 public class AfiliadoServcie implements IAfiliado {
 	
@@ -42,7 +45,9 @@ public class AfiliadoServcie implements IAfiliado {
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
-		return result.getBody();
+		JSONObject arrayafi = new JSONObject(result);
+		return arrayafi.toString();
+		
 	}
 	
 	//
@@ -62,7 +67,8 @@ public class AfiliadoServcie implements IAfiliado {
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
-		return result.getBody();
+		JSONObject arrayafi = new JSONObject(result);
+		return arrayafi.toString();
 	}
 
 }
