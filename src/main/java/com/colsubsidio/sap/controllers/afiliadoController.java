@@ -53,9 +53,9 @@ public class afiliadoController {
 	{
 		
 		System.out.println(tipoid+" / "+numeroId);
-		String result =  afil.Apigafiliado(tipoid,numeroId);
+		ApigeeAfiliadoResDTO result =  afil.Apigafiliado(tipoid,numeroId);
 		System.out.println(result);
-		return result;
+		return result.toString();
 		
 		
 	}
@@ -70,7 +70,7 @@ public class afiliadoController {
 		System.out.println("/empresa / "+numeroId);
 		String result =  afil.apiEmpresa(numeroId);
 		System.out.println(result);
-		return result;
+		return result.toString();
 	}
 	
 }

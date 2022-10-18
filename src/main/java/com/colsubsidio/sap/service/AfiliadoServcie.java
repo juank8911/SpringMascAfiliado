@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.interfaz.IAfiliado;
 import com.colsubsidio.sap.interfaz.IToken;
+import com.google.gson.Gson;
 
 @Service
 public class AfiliadoServcie implements IAfiliado {
@@ -28,7 +30,7 @@ public class AfiliadoServcie implements IAfiliado {
 	
 	
 	@Override
-	public String Apigafiliado(String tipoid, String numeroId) {
+	public ApigeeAfiliadoResDTO Apigafiliado(String tipoid, String numeroId) {
 		
 		RestTemplate restTemlete = new RestTemplate();
 		restTemlete.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
@@ -40,8 +42,10 @@ public class AfiliadoServcie implements IAfiliado {
 		headers.setBearerAuth(tk.getToken());
 		
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
-		ResponseEntity<String> result =
-								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
+		ResponseEntity<ApigeeAfiliadoResDTO> result =
+								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,ApigeeAfiliadoResDTO.class);
+//		mapeo(result);
+//		System.out.println(result.toString());
 		return result.getBody();
 	}
 	
@@ -63,6 +67,15 @@ public class AfiliadoServcie implements IAfiliado {
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
 		return result.getBody();
+	}
+	
+	
+	public void mapeo(ResponseEntity<ApigeeAfiliadoResDTO> result)
+	{
+		Gson gson = new Gson();
+		gson.toJson(result);
+		System.out.println("00000000000000000000000000");
+		System.out.println(gson);
 	}
 
 }
