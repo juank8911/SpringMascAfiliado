@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.colsubsidio.sap.interfaz.ITransDatos;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 
 @Service
@@ -18,11 +20,14 @@ public class TransformacionData implements ITransDatos {
 		 while (keys.hasNext())
 		 {
 			 String key = keys.next();
-			 System.out.println(key);
-			 System.out.println(afil.get(key));
-			 if (afil.get(key) instanceof JSONObject && !"type".equals(afil.get(key)))
+			 System.out.println(afil.get(key) instanceof JsonArray);
+			 System.out.println(afil.get(key) instanceof JsonObject);
+
+			 if (afil.get(key) instanceof JsonArray )
 			 {
-				 
+//				 && !"type".equals(afil.get(key))
+				 System.out.println(key);
+				 System.out.println(afil.get(key));
 			 }
 			
 		}

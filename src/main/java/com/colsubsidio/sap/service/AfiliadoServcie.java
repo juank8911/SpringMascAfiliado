@@ -65,6 +65,7 @@ public class AfiliadoServcie implements IAfiliado {
 		JsonArray jsonArr = new JsonArray();
 		jsonArr.add(result.getBody());
 		 System.out.println("array: " + jsonArr);
+		 
 		 ITraDat.transData(jsonObject);
 		 //llamar a la clase nueva y su metodo
 //		 recorrer con hasmap
