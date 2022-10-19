@@ -1,4 +1,4 @@
-package com.colsubsidio.sap.apigee;
+package com.colsubsidio.sap.apigee.afiliado;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,18 +11,17 @@ import lombok.ToString;
 @ToString
 @Builder
 @Data
-public class ApigeeDataResDTO {
-	
-	private ApigeeAfilResDto afiliado;
-	
+public class AfilServicioResDto {
+    
+    private String nombre;
+
 	@Override
 	public String toString() {
-		return "{"+"\"afiliado\": " + afiliado + "}";
+		return "{" + "\"nombre\": " + nombre + "}";
 	}
-
-	
-
-
-	
+    
+    
+    
+    
 
 }
