@@ -57,6 +57,9 @@ public class AfiliadoServcie implements IAfiliado {
 		JSONObject jsonObject = new JSONObject(result.getBody());
 		 System.out.println("OBJECT : "+jsonObject.toString());
 		
+		 //llamar a la clase nueva y su metodo
+//		 recorrer con hasmap
+//		 los datos en null = "";
 		return jsonObject.toString();
 
 	}
@@ -77,10 +80,9 @@ public class AfiliadoServcie implements IAfiliado {
 		
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
-								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
-		
+								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);		
 		 JSONObject jsonObject = new JSONObject(result.getBody());
-		 
+	 
 		return jsonObject.toString();
 	}
 	
