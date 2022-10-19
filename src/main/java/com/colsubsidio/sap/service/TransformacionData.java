@@ -20,14 +20,15 @@ public class TransformacionData implements ITransDatos {
 		 while (keys.hasNext())
 		 {
 			 String key = keys.next();
-			 System.out.println(afil.get(key) instanceof JsonArray);
+			 System.out.println(afil.get(key) instanceof JsonArray );
 			 System.out.println(afil.get(key) instanceof JsonObject);
-
-			 if (afil.get(key) instanceof JsonArray )
+			 System.out.println("data".equals(key)+" data=?");
+			 System.out.println(key);
+			 if ("data".equals(key))
 			 {
-//				 && !"type".equals(afil.get(key))
-				 System.out.println(key);
 				 System.out.println(afil.get(key));
+				 JSONObject data = new JSONObject(afil.get(key));
+				 Iterator<String> kysDate = data.keys();
 			 }
 			
 		}
