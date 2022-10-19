@@ -10,6 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Builder
+@Data
 public class Nombre {
 	  private String primero;
 	  private String segundo;
