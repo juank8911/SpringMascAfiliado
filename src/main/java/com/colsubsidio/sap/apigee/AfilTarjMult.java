@@ -27,6 +27,8 @@ public class AfilTarjMult {
 	private String ultimoMesPagado;
 	private String motivoBloqueo;
 	private String serialProximidad;
+	
+	
 	@Override
 	public String toString() {
 		return "{"+  "\"metodoPago\": " + metodoPago + ", \"lote\": " + lote + ", \"numeroTarjeta\": " + numeroTarjeta

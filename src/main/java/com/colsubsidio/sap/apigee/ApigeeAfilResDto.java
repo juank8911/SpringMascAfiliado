@@ -3,6 +3,7 @@ package com.colsubsidio.sap.apigee;
 import java.sql.Date;
 import java.util.List;
 
+import com.colsubsidio.sap.apigee.afiliado.AfilCuotaMonResDTO;
 import com.colsubsidio.sap.apigee.afiliado.afilAfiliacionResDto;
 import com.colsubsidio.sap.apigee.afiliado.direccionAfiliadoResDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -27,7 +28,7 @@ public class ApigeeAfilResDto {
     private String segundoNombre;
     private String primerApellido;
     private String segundoApellido;
-    @JsonFormat(pattern = "yyyy-MM-dd")
+   @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GTM+25")
     private Date fechaNacimiento;
     private String edad;
     private String genero;
@@ -40,11 +41,11 @@ public class ApigeeAfilResDto {
     private String correoElectronico;
     private List<String> contacto;
     private direccionAfiliadoResDto direccion;
-    private afilAfiliacionResDto afiliacion;
-
     private String direccionPrincipal;
     private String direccionSecundaria;
-    
+    private afilAfiliacionResDto afiliacion;
+    private AfilCuotaMonResDTO cuotaMonetaria;
+    private AfilTarjMult tarjetaMultiservicios;
     
     
     
