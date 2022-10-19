@@ -36,16 +36,8 @@ public class CompaniasResDTO {
 	private String telefono;
 	private String localidad;
 	private DireccionEmpResDTO direccion;
-<<<<<<< HEAD
 	private String empresaPrincipal;
-=======
-	//
-	//falta agregar la direccion al toString
-	//
-	private String empresaPrincipal;
-	
 
->>>>>>> 8aaf2fb4eb0e9e939ad3ac04a23733983b3738ee
 	@Override
 	public String toString() {
 		return "{"+"  \"bp\": " + bp + ", \"tipoDocumento\": " + tipoDocumento + ", \"numberoDocumento\": "
