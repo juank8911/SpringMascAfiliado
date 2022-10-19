@@ -19,6 +19,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 @Service
 public class AfiliadoServcie implements IAfiliado {
 	
@@ -50,10 +53,12 @@ public class AfiliadoServcie implements IAfiliado {
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
+
 		JSONObject jsonObject = new JSONObject(result.getBody());
 		 System.out.println("OBJECT : "+jsonObject.toString());
 		
 		return jsonObject.toString();
+
 	}
 	
 	//
@@ -87,6 +92,7 @@ public class AfiliadoServcie implements IAfiliado {
 		String afiliado = gson.toJson(afili);
 		System.out.println(afiliado);
 		return afiliado;
+
 	}
 
 }

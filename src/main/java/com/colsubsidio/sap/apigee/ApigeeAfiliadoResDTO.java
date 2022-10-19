@@ -1,5 +1,6 @@
 package com.colsubsidio.sap.apigee;
 
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,6 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+//import javax.persistence.Temporal;	
+//import javax.persistence.TemporalType;
 //
 
 @AllArgsConstructor
@@ -79,6 +82,7 @@ public class ApigeeAfiliadoResDTO {
 	    @JsonProperty("data.afiliado")
 	    private String estado_afil;
 	    @JsonProperty("data.afiliado.afiliacion")
+	   // @Temporal(TemporalType.DATE)
 	    private String fechaAfiliacion;
 	    @JsonProperty("data.afiliado.afiliacion")
 	    private String categoria;
