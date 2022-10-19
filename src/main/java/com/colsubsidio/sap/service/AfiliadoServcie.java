@@ -15,11 +15,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.colsubsidio.sap.adapters.AfiliadoAdapter;
 import com.colsubsidio.sap.interfaz.IAfiliado;
 import com.colsubsidio.sap.interfaz.IToken;
+import com.colsubsidio.sap.interfaz.ITransDatos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
+
 import java.util.HashMap;
+
+import lombok.Data;
+
+import java.io.Console;
+
 import java.util.Iterator;
 
 import org.json.JSONArray;
@@ -31,8 +38,12 @@ public class AfiliadoServcie implements IAfiliado {
 	@Autowired
 	private IToken tk;
 	
+	@Autowired
+	private ITransDatos ITraDat;
+
 
 	//AfiliadoAdapter afAd;
+
 	
 	//private TokenService tk = new TokenService();
 //	private String urlApi = "https://colsubsidio-test.apigee.net";
@@ -58,11 +69,14 @@ public class AfiliadoServcie implements IAfiliado {
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
 
 		JSONObject jsonObject = new JSONObject(result.getBody());
-		 System.out.println("OBJECT : "+jsonObject.toString());
-		
+		JsonArray jsonArr = new JsonArray();
+		jsonArr.add(result.getBody());
+		 System.out.println("array: " + jsonArr);
+		 ITraDat.transData(jsonObject);
 		 //llamar a la clase nueva y su metodo
 //		 recorrer con hasmap
 //		 los datos en null = "";
+
 		 
 		 Iterator<String> keys = jsonObject.keys();
 		 HashMap<String, String> map = new HashMap<String, String>();
@@ -75,6 +89,13 @@ public class AfiliadoServcie implements IAfiliado {
              }
          }
 		return jsonObject.toString();
+
+//		 y formato a las fechas
+		 
+		//return jsonArr.toString();
+		
+//		Data[0].afiliados.nombre =="null" ? Data[0].afiliados.nombre ="" : Data[0].afiliados.nombre=Data[0].afiliados.nombre; 
+
 
 	}
 	
