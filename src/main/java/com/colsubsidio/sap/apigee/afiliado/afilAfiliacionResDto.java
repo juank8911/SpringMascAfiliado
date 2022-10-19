@@ -1,5 +1,9 @@
 package com.colsubsidio.sap.apigee.afiliado;
 
+import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,8 +17,9 @@ import lombok.ToString;
 @Data
 public class afilAfiliacionResDto {
 	
-    
-        private String fechaAfiliacion;
+    	
+		@JsonFormat(pattern = "yyyy-MM-dd")
+        private Date fechaAfiliacion;
         private String categoria;
         private String grupo;
         private String tipoSalario;

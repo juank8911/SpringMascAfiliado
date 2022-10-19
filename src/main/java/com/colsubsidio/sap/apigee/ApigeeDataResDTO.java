@@ -14,11 +14,12 @@ import lombok.ToString;
 public class ApigeeDataResDTO {
 	
 	private ApigeeAfilResDto afiliado;
-	
+	private ApigeeEmpleadoresResDTO empleadores;
 	@Override
 	public String toString() {
-		return "{"+"\"afiliado\": " + afiliado + "}";
+		return "{"+"  \"afiliado\": " + afiliado + ", \"empleadores\": " + empleadores + "  }";
 	}
+	
 
 	
 

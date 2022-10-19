@@ -36,22 +36,23 @@ public class CompaniasResDTO {
 	private String telefono;
 	private String localidad;
 	private DireccionEmpResDTO direccion;
-	//
-	//falta agregar la direccion al toString
-	//
 	private String empresaPrincipal;
-	
 
 	@Override
 	public String toString() {
-		return "{"+  "\"bp\": " + bp + ", \"tipoDocumento\": " + tipoDocumento + ", \"numberoDocumento\": "
+		return "{"+"  \"bp\": " + bp + ", \"tipoDocumento\": " + tipoDocumento + ", \"numberoDocumento\": "
 				+ numberoDocumento + ", \"nombre\": " + nombre + ", \"tipoAportante\": " + tipoAportante
 				+ ", \"claserAportante\": " + claserAportante + ", \"fechaInicioActividad\": " + fechaInicioActividad
 				+ ", \"fechaIngresoAfiliado\": " + fechaIngresoAfiliado + ", \"estado\": " + estado
 				+ ", \"fechaInicioVigencia\": " + fechaInicioVigencia + ", \"fechaFinVigencia\": " + fechaFinVigencia
 				+ ", \"salario\": " + salario + ", \"sucursal\": " + sucursal + ", \"telefono\": " + telefono
-				+ ", \"localidad\": " + localidad + ", \"empresaPrincipal\": " + empresaPrincipal +   "}";
+				+ ", \"localidad\": " + localidad + ", \"direccion\": " + direccion + ", \"empresaPrincipal\": "
+				+ empresaPrincipal + "  }";
 	}
+	
+
+	
+	
 	
 	
 

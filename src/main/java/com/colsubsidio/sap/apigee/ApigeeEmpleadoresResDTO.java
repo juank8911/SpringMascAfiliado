@@ -1,4 +1,6 @@
 package com.colsubsidio.sap.apigee;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,8 +16,16 @@ public class ApigeeEmpleadoresResDTO {
 
 
 		
-		private String empleadoresConcurrentes;
-		private CompaniasResDTO companias;
+	private List<CompaniasResDTO> companias;
+
+	@Override
+	public String toString() {
+		return "{"+  "\"companias\": " + companias + "  }";
+	}
+	
+
+	
+	
 
 		
 

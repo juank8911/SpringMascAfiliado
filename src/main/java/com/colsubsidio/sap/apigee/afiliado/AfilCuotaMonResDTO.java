@@ -21,6 +21,7 @@ public class AfilCuotaMonResDTO {
 	private String lugarEntrega;
     private String valorUltimoSubsidio;
     private String monto;
+    
 	@Override
 	public String toString() {
 		return "{"+ "\"tieneCuotaMonetaria\": " + tieneCuotaMonetaria + ", \"lugarEntrega\": " + lugarEntrega
