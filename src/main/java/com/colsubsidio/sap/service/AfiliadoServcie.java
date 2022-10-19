@@ -81,8 +81,6 @@ public class AfiliadoServcie implements IAfiliado {
 		 
 		 Iterator<String> keys = jsonObject.keys();
 		 
-		
-		 
 		 while(keys.hasNext()) {
              String key = keys.next();
              if (jsonObject.isNull(key)){
