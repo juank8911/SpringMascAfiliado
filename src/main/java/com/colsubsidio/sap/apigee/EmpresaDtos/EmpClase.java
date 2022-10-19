@@ -1,7 +1,5 @@
 package com.colsubsidio.sap.apigee.EmpresaDtos;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,15 +11,15 @@ import lombok.ToString;
 @ToString
 @Builder
 @Data
-public class ApigeeDataEmpResDTO {
-
+public class EmpClase {
 	
-	private contriEmpResDTo contribuyente;
-
+	private String id;
+    private String descripcion;
 	@Override
 	public String toString() {
-		return "{"+  "\"contribuyente\": " + contribuyente + "  }";
+		return "{" + "\"id\": " + id + ", \"descripcion\": " + descripcion + "  }";
 	}
-	
-	
+    
+    
+
 }

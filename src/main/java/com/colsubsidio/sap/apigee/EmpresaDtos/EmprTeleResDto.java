@@ -4,6 +4,8 @@ public class EmprTeleResDto {
 	
 	private String fijo;
 	private String celular;
+	
+	
 	@Override
 	public String toString() {
 		return "{" +" \"fijo\": " + fijo + ", \"celular\": " + celular + "  }";

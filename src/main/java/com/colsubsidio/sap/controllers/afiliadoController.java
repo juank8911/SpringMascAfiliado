@@ -25,6 +25,7 @@ import com.colsubsidio.sap.apigee.ApigeeAfiliadoResDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 import com.colsubsidio.sap.apigee.ApigeeValidadorReq;
+import com.colsubsidio.sap.apigee.EmpresaDtos.ApigeeEmpresaResDto;
 import com.colsubsidio.sap.interfaz.IAfiliado;
 import com.colsubsidio.sap.service.AfiliadoServcie;
 import com.colsubsidio.sap.service.TokenService;
@@ -68,7 +69,7 @@ public class afiliadoController {
 		//crear metodo para consumir de la api empresas
 	//String afiliado = afil.getEmpresaPrincipal();
 		System.out.println("/empresa / "+numeroId);
-		String result =  afil.apiEmpresa(numeroId);
+		ApigeeEmpresaResDto result =  afil.apiEmpresa(numeroId);
 		System.out.println(result);
 		return result.toString();
 	}

@@ -22,5 +22,11 @@ public class ApigeeEmpresaResDto {
 	    private String mensaje;
 //	    @JsonProperty("data")
 	    private List<ApigeeDataEmpResDTO> data;
+		@Override
+		public String toString() {
+			return "{"+  "\"estado\": " + estado + ", \"mensaje\": " + mensaje + ", \"data\": " + data + "  }";
+		}
+	    
+	    
 
 }
