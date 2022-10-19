@@ -15,10 +15,7 @@ public class CiudadResDTO {
 	
 	private String codigo;
 
-	@Override
-	public String toString() {
-		return "CiudadResDTO [codigo=" + codigo + "]";
-	}
+
 	
 	
 

@@ -31,13 +31,13 @@ public class CompaniasResDTO {
 	
 	@Override
 	public String toString() {
-		return "CompaniasResDTO [bp=" + bp + ", tipoDocumento=" + tipoDocumento + ", numberoDocumento="
-				+ numberoDocumento + ", nombre=" + nombre + ", tipoAportante=" + tipoAportante + ", claserAportante="
-				+ claserAportante + ", fechaInicioActividad=" + fechaInicioActividad + ", fechaIngresoAfiliado="
-				+ fechaIngresoAfiliado + ", estado=" + estado + ", fechaInicioVigencia=" + fechaInicioVigencia
-				+ ", fechaFinVigencia=" + fechaFinVigencia + ", salario=" + salario + ", sucursal=" + sucursal
-				+ ", telefono=" + telefono + ", localidad=" + localidad + ", empresaPrincipal=" + empresaPrincipal
-				+ "]";
+		return "{"+  "\"bp\": " + bp + ", \"tipoDocumento\": " + tipoDocumento + ", \"numberoDocumento\": "
+				+ numberoDocumento + ", \"nombre\": " + nombre + ", \"tipoAportante\": " + tipoAportante
+				+ ", \"claserAportante\": " + claserAportante + ", \"fechaInicioActividad\": " + fechaInicioActividad
+				+ ", \"fechaIngresoAfiliado\": " + fechaIngresoAfiliado + ", \"estado\": " + estado
+				+ ", \"fechaInicioVigencia\": " + fechaInicioVigencia + ", \"fechaFinVigencia\": " + fechaFinVigencia
+				+ ", \"salario\": " + salario + ", \"sucursal\": " + sucursal + ", \"telefono\": " + telefono
+				+ ", \"localidad\": " + localidad + ", \"empresaPrincipal\": " + empresaPrincipal +   "}";
 	}
 	
 	
