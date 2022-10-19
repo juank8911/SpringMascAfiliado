@@ -1,4 +1,5 @@
 package com.colsubsidio.sap.apigee;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,21 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Builder
-@Data
-public class ApigeeEmpleadoresResDTO {
+public class Afiliacion {
 
-
-		
-		private String empleadoresConcurrentes;
-		private CompaniasResDTO companias;
-
-		
-
-		
-
-
-		
-
-	
-
+	private String categoria;
 }
