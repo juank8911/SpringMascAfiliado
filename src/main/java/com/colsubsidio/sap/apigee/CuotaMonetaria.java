@@ -11,8 +11,9 @@ import lombok.ToString;
 @ToString
 @Builder
 @Data
-public class Empresa {
+public class CuotaMonetaria {
+	
+	private String valorSubsidio;
+	private Administrador administrador;
 
-	private String nombre;
-	private DocumentoResDTO documento;
 }
