@@ -14,4 +14,11 @@ public class Direccion {
 	
 	private String direccionPrincipal;
 
+	@Override
+	public String toString() {
+		return "{"+  "\"direccionPrincipal\": " + direccionPrincipal + "  }";
+	}
+	
+	
+
 }
