@@ -80,13 +80,11 @@ public class AfiliadoServcie implements IAfiliado {
 
 		 
 		 Iterator<String> keys = jsonObject.keys();
-		 HashMap<String, String> map = new HashMap<String, String>();
-		
 		 
 		 while(keys.hasNext()) {
              String key = keys.next();
-             if (jsonObject.get(key) instanceof JSONObject && jsonObject.isNull(key)){
-                map.put(key, "");
+             if (jsonObject.isNull(key)){
+            	 jsonObject.put(key, "");
              }
          }
 		return jsonObject.toString();
