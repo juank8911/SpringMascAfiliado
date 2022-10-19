@@ -2,9 +2,7 @@ package com.colsubsidio.sap.service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,14 +15,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
 import com.colsubsidio.sap.apigee.ApigeeTokenReqDTO;
 import com.colsubsidio.sap.apigee.ApigeeTokenResDTO;
 import com.colsubsidio.sap.interfaz.IToken;
 
-import lombok.Data;
 
-<<<<<<< HEAD
 //@Component
 @Service
 public class TokenService implements IToken{
@@ -44,30 +39,8 @@ public class TokenService implements IToken{
 //	private String clienteSecreto = "9yXLfPgaxBAYEGSl";
 //Cliente cliente Secreto en produccion
 	private String clienteSecreto = "V8ZAMt4NIsdySGPg";
-=======
-
-@Data
-@Component
-public class TokenService {
-
-    //@Value("${apigee.url}")
-    private String urlApi = "https://colsubsidio-test.apigee.net";
-    
-   
-//    @Value("${apigee.token.url}")
-	private String auth = "/oauth/client_credential/accesstoken";
-//    @Value("${apigee.token.clienteId}")
-    private String clienteId = "sD68JKGm4GeAb8lFva22v7OgCBSXfcbj";;
-//    
-//	@Value("${apigee.token.clienteSecreto}")
-	private String clienteSecreto = "9yXLfPgaxBAYEGSl";
-	//
->>>>>>> afil
 	//@Value("${apigee.token.maxTimeInMillis}")
 	private Long maxTimeInMillis = (long) 300000;
-	
-	@Value("${prueba}")
-	private String apigie;
 	
 	
 
@@ -94,7 +67,6 @@ public class TokenService {
 	}
 	
 	private void generateToken() {
-//		System.out.println(apigie);
 		ApigeeTokenReqDTO request = new ApigeeTokenReqDTO();
 		request.setClienteId(clienteId);
 		request.setClienteSecreto(clienteSecreto);
