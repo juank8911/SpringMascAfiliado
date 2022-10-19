@@ -1,6 +1,7 @@
 package com.colsubsidio.sap.service;
 
 import java.io.Console;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.Iterator;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -82,7 +84,7 @@ public class TransformacionData implements ITransDatos {
 		return resp;
 	}
 
-	private JSONArray TransDatosPacs(JSONArray pacs) {
+	private JSONArray TransDatosPacs(JSONArray pacs) throws JSONException, ParseException {
 		// TODO Auto-generated method stub
 		JSONArray respPacs = new JSONArray();
 			for(int i=0;i<pacs.length();i++)
@@ -106,10 +108,12 @@ public class TransformacionData implements ITransDatos {
 	
 	
 	//este metodo necesito que lo realices 
-	public void convertirFecha(String fecha)
+	public void convertirFecha(String fecha) throws  ParseException
 	{
+		SimpleDateFormat formato = new SimpleDateFormat("DD/MM/YYYY"); 
+		Date fecha1 = formato.parse(fecha);
 		System.out.println("dentro de convertir fecha");
-		System.out.println(fecha);
+		System.out.println(fecha1);
 	}
 
 	@Override
