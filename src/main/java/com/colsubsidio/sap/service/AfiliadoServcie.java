@@ -1,5 +1,6 @@
 package com.colsubsidio.sap.service;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,14 +12,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.colsubsidio.sap.adapters.AfiliadoAdapter;
 import com.colsubsidio.sap.interfaz.IAfiliado;
 import com.colsubsidio.sap.interfaz.IToken;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 
 @Service
 public class AfiliadoServcie implements IAfiliado {
 	
 	@Autowired
 	private IToken tk;
+	
+
+	AfiliadoAdapter afAd;
 	
 	//private TokenService tk = new TokenService();
 //	private String urlApi = "https://colsubsidio-test.apigee.net";
@@ -42,7 +50,10 @@ public class AfiliadoServcie implements IAfiliado {
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
-		return result.getBody();
+		JSONObject jsonObject = new JSONObject(result.getBody());
+		 System.out.println("OBJECT : "+jsonObject.toString());
+		
+		return jsonObject.toString();
 	}
 	
 	//
@@ -62,7 +73,20 @@ public class AfiliadoServcie implements IAfiliado {
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> result =
 								restTemlete.exchange(url.toUriString(),HttpMethod.GET,entity,String.class);
-		return result.getBody();
+		
+		 JSONObject jsonObject = new JSONObject(result.getBody());
+		 
+		return jsonObject.toString();
+	}
+	
+
+	
+	public String converit(String afili)
+	{
+		Gson gson = new Gson();
+		String afiliado = gson.toJson(afili);
+		System.out.println(afiliado);
+		return afiliado;
 	}
 
 }

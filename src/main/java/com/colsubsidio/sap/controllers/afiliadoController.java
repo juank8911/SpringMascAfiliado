@@ -52,10 +52,10 @@ public class afiliadoController {
 	public String getAfiliado(@PathVariable("tipoid") String tipoid,@PathVariable("numeroId") String numeroId)
 	{
 		
-		System.out.println(tipoid+" / "+numeroId);
+//		System.out.println(tipoid+" / "+numeroId);
 		String result =  afil.Apigafiliado(tipoid,numeroId);
-		System.out.println(result);
-		return result;
+//		System.out.println(result);
+		return result.toString();
 		
 		
 	}
@@ -67,10 +67,12 @@ public class afiliadoController {
 	{
 		//crear metodo para consumir de la api empresas
 	//String afiliado = afil.getEmpresaPrincipal();
-		System.out.println("/empresa / "+numeroId);
+//		System.out.println("/empresa / "+numeroId);
 		String result =  afil.apiEmpresa(numeroId);
-		System.out.println(result);
-		return result;
+//		System.out.println(result);
+		return result.toString();
 	}
+	
+
 	
 }
