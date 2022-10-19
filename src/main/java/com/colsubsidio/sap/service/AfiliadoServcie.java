@@ -19,6 +19,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,7 +32,7 @@ public class AfiliadoServcie implements IAfiliado {
 	private IToken tk;
 	
 
-	AfiliadoAdapter afAd;
+	//AfiliadoAdapter afAd;
 	
 	//private TokenService tk = new TokenService();
 //	private String urlApi = "https://colsubsidio-test.apigee.net";
@@ -60,6 +63,17 @@ public class AfiliadoServcie implements IAfiliado {
 		 //llamar a la clase nueva y su metodo
 //		 recorrer con hasmap
 //		 los datos en null = "";
+		 
+		 Iterator<String> keys = jsonObject.keys();
+		 HashMap<String, String> map = new HashMap<String, String>();
+		
+		 
+		 while(keys.hasNext()) {
+             String key = keys.next();
+             if (jsonObject.get(key) instanceof JSONObject && jsonObject.isNull(key)){
+                map.put(key, "");
+             }
+         }
 		return jsonObject.toString();
 
 	}
