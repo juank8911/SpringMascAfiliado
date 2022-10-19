@@ -71,23 +71,14 @@ public class AfiliadoServcie implements IAfiliado {
 		JSONObject jsonObject = new JSONObject(result.getBody());
 		JsonArray jsonArr = new JsonArray();
 		jsonArr.add(result.getBody());
-		 System.out.println("array: " + jsonArr);
+//		 System.out.println("array: " + jsonArr);
 		 
-		 ITraDat.transData(jsonObject);
+		JSONObject resp = ITraDat.transData(jsonObject);
 		 //llamar a la clase nueva y su metodo
 //		 recorrer con hasmap
 //		 los datos en null = "";
 
-		 
-		 Iterator<String> keys = jsonObject.keys();
-		 
-		 while(keys.hasNext()) {
-             String key = keys.next();
-             if (jsonObject.isNull(key)){
-            	 jsonObject.put(key, "");
-             }
-         }
-		return jsonObject.toString();
+		return resp.toString();
 
 //		 y formato a las fechas
 		 

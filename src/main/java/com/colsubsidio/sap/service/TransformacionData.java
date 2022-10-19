@@ -16,8 +16,9 @@ import com.google.gson.JsonObject;
 public class TransformacionData implements ITransDatos {
 
 	@Override
-	public void transData(JSONObject afil)
+	public JSONObject transData(JSONObject afil)
 	{
+		JSONObject resp = new JSONObject();
 		JSONArray data = afil.getJSONArray("data");
 //		System.out.println(data);
 		Iterator<String> keys = afil.keys();
@@ -28,23 +29,65 @@ public class TransformacionData implements ITransDatos {
 //			 System.out.println(afil.get(key) instanceof JsonObject);
 //			 System.out.println("data".equals(key)+" data=?");
 //			 System.out.println(key);
-			 if ("data".equals(key))
+			 if (afil.get(key) instanceof JSONArray)
 			 {
-//				 System.out.println(afil.get(key));
-				 JSONObject datas = new JSONObject(afil.get(key));
-				 Iterator<String> kysDate = datas.keys();
-				 
-				 while (kysDate.hasNext()) 
+//				 System.out.println("es array");
+				 JSONArray auxdt = afil.getJSONArray(key);
+//				 System.out.println(auxdt.length());
+				 for(int i=0;i<auxdt.length();i++)
 				 {
+					 JSONObject aux = auxdt.getJSONObject(i);
+					 System.out.println(aux instanceof JSONObject);
 					 
-					 String kyDate = kysDate.next();
-					 System.out.println("segundo wile");
-					 System.out.println(datas.get(kyDate));
-					
-				}
+					 if(aux instanceof JSONObject)
+					 {
+						 Iterator<String> keys2 = aux.keys();
+						 			while (keys2.hasNext())
+						 			{
+						 				String key2 = keys2.next();
+//						 				System.out.println(key2);
+						 				System.out.println(aux.get(key2).getClass());
+						 				//tratar datos de pacs
+						 				//tratar datos de afiliado
+						 				//tratar Datos de empleadores
+						 				if("pacs".equals(key2) && aux.get(key2) instanceof JSONArray)
+						 				{
+						 				JSONArray pacsRt = aux.getJSONArray(key2);
+						 				pacsRt = TransDatosPacs(pacsRt);
+						 				}
+						 			
+						 			}
+						 
+					 }
+					 else
+					 {
+						 System.out.println("no esw objeto");
+					 }
+					 
+				 }
 			 }
+			 else 
+			 {
+//				 System.out.println("no es array");
+				 resp.append(key, afil.get(key));
+			 }
+//			 System.out.println(resp.toString());
+	
 			
 		}
+		return resp;
+	}
+
+	private JSONArray TransDatosPacs(JSONArray pacs) {
+		// TODO Auto-generated method stub
+			
+			for(int i=0;i<pacs.length();i++)
+			{
+				System.out.println(pacs.length());
+				JSONObject auxPac = pacs.getJSONObject(i);
+				System.out.println(auxPac.get("nivelEducativo"));
+			}
+		return pacs;
 	}
 
 	@Override
