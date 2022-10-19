@@ -1,0 +1,16 @@
+ 
+ prueba: 888
+ apigee:
+  url: https://colsubsidio-test.apigee.net
+  urlMock: http://www.mocky.io/v2/
+  token:
+   url: /oauth/client_credential/accesstoken
+   clienteId: sD68JKGm4GeAb8lFva22v7OgCBSXfcbj
+   clienteSecreto: 9yXLfPgaxBAYEGSl
+   maxTimeInMillis: 300000
+  path:
+    auth: /oauth/client_credential/accesstoken
+    logger: /api/v1/tecnologia/logger
+    method: POST 
+ 
+ 

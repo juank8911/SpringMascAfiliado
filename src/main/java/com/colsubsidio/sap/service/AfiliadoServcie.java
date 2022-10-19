@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
+import lombok.Data;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -60,7 +62,10 @@ public class AfiliadoServcie implements IAfiliado {
 		 //llamar a la clase nueva y su metodo
 //		 recorrer con hasmap
 //		 los datos en null = "";
+//		 y formato a las fechas
 		return jsonObject.toString();
+		
+//		Data[0].afiliados.nombre =="null" ? Data[0].afiliados.nombre ="" : Data[0].afiliados.nombre=Data[0].afiliados.nombre; 
 
 	}
 	
