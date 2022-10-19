@@ -1,5 +1,9 @@
 package com.colsubsidio.sap.apigee;
 
+import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,17 +22,30 @@ public class CompaniasResDTO {
 	private String nombre;
 	private String tipoAportante;
 	private String claserAportante;
-	private String fechaInicioActividad;
-	private String fechaIngresoAfiliado;
+	@JsonFormat(pattern = "yyyy-MM-dd")	   
+	private Date fechaInicioActividad;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date fechaIngresoAfiliado;
 	private String estado;
-	private String fechaInicioVigencia;
-	private String fechaFinVigencia;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date fechaInicioVigencia;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date fechaFinVigencia;
 	private String salario;
 	private String sucursal;
 	private String telefono;
 	private String localidad;
 	private DireccionEmpResDTO direccion;
+<<<<<<< HEAD
 	private String empresaPrincipal;
+=======
+	//
+	//falta agregar la direccion al toString
+	//
+	private String empresaPrincipal;
+	
+
+>>>>>>> 8aaf2fb4eb0e9e939ad3ac04a23733983b3738ee
 	@Override
 	public String toString() {
 		return "{"+"  \"bp\": " + bp + ", \"tipoDocumento\": " + tipoDocumento + ", \"numberoDocumento\": "
@@ -46,6 +63,7 @@ public class CompaniasResDTO {
 	
 	
 	
+
 	
 	
 

@@ -16,6 +16,7 @@ public class ApigeeEmpleadoresResDTO {
 
 
 		
+<<<<<<< HEAD
 	private String empleadoresConcurrentes;
 	private List<CompaniasResDTO> companias;
 	
@@ -25,6 +26,10 @@ public class ApigeeEmpleadoresResDTO {
 	}
 	
 	
+=======
+		private String empleadoresConcurrentes;
+		private CompaniasResDTO companias;
+>>>>>>> 8aaf2fb4eb0e9e939ad3ac04a23733983b3738ee
 
 		
 
