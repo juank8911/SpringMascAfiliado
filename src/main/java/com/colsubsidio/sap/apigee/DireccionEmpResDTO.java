@@ -14,10 +14,11 @@ import lombok.ToString;
 @Data
 public class DireccionEmpResDTO {
 	
-	private String empresaPrincipal;
-	private DepartamentoResDTO depEmp;
-	private CiudadResDTO ciuEmp;
+	private String direccionPrincipal;
+	private DepartamentoResDTO departamento;
+	private CiudadResDTO ciudad;
 	
+	//corregir toString
 	@Override
 	public String toString() {
 		return "DireccionEmpResDTO [empresaPrincipal=" + empresaPrincipal + ", depEmp=" + depEmp + ", ciuEmp=" + ciuEmp

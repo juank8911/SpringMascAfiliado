@@ -24,6 +24,7 @@ public class ApigeeAfiliadoResDTO {
 //	    @JsonProperty("data")
 	    private List<ApigeeDataResDTO> data;
 @Override
+
 		public String toString() {
 			return " {\"estado\": " + estado + ", \"mensaje\": " + mensaje + ", \"data\": " + data + "}";
 		}
