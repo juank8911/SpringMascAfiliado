@@ -1,6 +1,10 @@
 package com.colsubsidio.sap.service;
 
 import java.io.Console;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 import org.json.JSONArray;
@@ -80,14 +84,32 @@ public class TransformacionData implements ITransDatos {
 
 	private JSONArray TransDatosPacs(JSONArray pacs) {
 		// TODO Auto-generated method stub
-			
+		JSONArray respPacs = new JSONArray();
 			for(int i=0;i<pacs.length();i++)
 			{
-				System.out.println(pacs.length());
+				JsonObject JsoBenf = new JsonObject();
+//				System.out.println(pacs.length());
 				JSONObject auxPac = pacs.getJSONObject(i);
-				System.out.println(auxPac.get("nivelEducativo"));
+				System.out.println(auxPac.toString());		
+				JsoBenf.addProperty("numeroDocumento", auxPac.get("numeroDocumento").toString());
+				JsoBenf.addProperty("bNombre", auxPac.get("primerNombre").toString() +" "+auxPac.get("segundoNombre").toString()+" "+auxPac.get("apellido").toString()+" "+auxPac.get("segundoApellido").toString());
+				JSONObject relacion = auxPac.getJSONObject("relacion");
+				JsoBenf.addProperty("relacion", relacion.get("descripcion").toString());
+				JsoBenf.addProperty("genero", auxPac.get("genero").toString().equals("1")?"Femenino":"Masculino");
+				System.out.println(auxPac.get("fechaNacimiento"));
+				
+				convertirFecha(auxPac.get("fechaNacimiento").toString());
+				System.out.println(JsoBenf.toString());
 			}
 		return pacs;
+	}
+	
+	
+	//este metodo necesito que lo realices 
+	public void convertirFecha(String fecha)
+	{
+		System.out.println("dentro de convertir fecha");
+		System.out.println(fecha);
 	}
 
 	@Override
