@@ -8,14 +8,13 @@ my:
       
       
 estado:
-  afiliado:
     estado: '{"VIGEN":"Vigente","05":"Receso","RETIR":"Retirado","SUSPE":"Suspendido"}'
-appli:
-  afiliado:
-    - VIGEN
-    - "05"
-    - RETIR
-    - SUSPE
+    tarjeta: '{"00":"","01":"En Asignaci\u00f3n","02":"En Alistamiento","03":"En Distribuci\u00f3n", "04":"Entregada","05":"Ilocalizada","06":"En Custodia", "99":"Inhabilitada"}'    
+tipo:
+    tra: '{"ZTRA1429":"Afiliado ley 1429","ZTRAE":"Afiliado Normal","ZTRA":"Afiliado Dependiente","ZAFA":"Afiliado Facultativo","ZAIN":"Afiliado Independiente","ZAPE":"Afiliado Pensionado","ZP25":"Afiliado Pensionado 25 a\u00f1os","ZAAS":"Apoderado Asamblea","ZACO":"Afiliado Cortesia","ZAMA":"Autorizados Manila","ZEAS":"Entidad Asociativa","ZEFA":"Entidad Facultativa","ZEMP":"Empresa","ZENC":"Entidad de control","ZEPA":"Entidad Pagadora","ZNAF":"Empresa No Afiliada"}'
+
+
+
  
 #spring:
 #  config:
