@@ -1,4 +1,22 @@
-
-spring:
-  config:
-    import: "file:./config/general.yml"
+my:
+  property:
+    s: "Hola mundo"
+    x:
+      i: 5
+      b: true
+      numbers: 1, 2, 3
+      
+      
+estado:
+  afiliado:
+    estado: '{"VIGEN":"Vigente","05":"Receso","RETIR":"Retirado","SUSPE":"Suspendido"}'
+appli:
+  afiliado:
+    - VIGEN
+    - "05"
+    - RETIR
+    - SUSPE
+ 
+#spring:
+#  config:
+#    import: "file:./config/general.yml"
