@@ -12,6 +12,7 @@ estado:
     tarjeta: '{"00":"","01":"En Asignaci\u00f3n","02":"En Alistamiento","03":"En Distribuci\u00f3n", "04":"Entregada","05":"Ilocalizada","06":"En Custodia", "99":"Inhabilitada"}'    
 tipo:
     tra: '{"ZTRA1429":"Afiliado ley 1429","ZTRAE":"Afiliado Normal","ZTRA":"Afiliado Dependiente","ZAFA":"Afiliado Facultativo","ZAIN":"Afiliado Independiente","ZAPE":"Afiliado Pensionado","ZP25":"Afiliado Pensionado 25 a\u00f1os","ZAAS":"Apoderado Asamblea","ZACO":"Afiliado Cortesia","ZAMA":"Autorizados Manila","ZEAS":"Entidad Asociativa","ZEFA":"Entidad Facultativa","ZEMP":"Empresa","ZENC":"Entidad de control","ZEPA":"Entidad Pagadora","ZNAF":"Empresa No Afiliada"}'
+    docum: '{"CO1N":"NIT", "CO1C":"C\u00e9dula De Ciudadan\u00eda", "CO1E":"Cedula Extranjer\u00eda", "CO1T":"Tarjeta Identidad", "CO1L":"Registro Civil", "CO1P":"Pasaporte", "CO1D":"Carnet Diplomatico"}'
 
 
 

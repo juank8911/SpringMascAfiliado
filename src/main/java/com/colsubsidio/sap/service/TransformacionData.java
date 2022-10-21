@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +43,9 @@ private JSONObject eTarjeta;
 @Value("${tipo.tra:}")
 private JSONObject trabajo;
 
+@Value("${tipo.docum:}")
+private JSONObject tDocu;
+
 
 
 
@@ -71,7 +75,7 @@ private JSONObject trabajo;
 				 for(int i=0;i<auxdt.length();i++)
 				 {
 					 JSONObject aux = auxdt.getJSONObject(i);
-//					 System.out.println(aux instanceof JSONObject);
+					 System.out.println(aux instanceof JSONObject);
 					 
 					 if(aux instanceof JSONObject)
 					 {
@@ -79,16 +83,16 @@ private JSONObject trabajo;
 						 			while (keys2.hasNext())
 						 			{
 						 				String key2 = keys2.next();
-//						 				System.out.println(key2);
-//						 				System.out.println(aux.get(key2));
-//						 				System.out.println(aux.get(key2).getClass());
-						 				//tratar datos de afiliado
-						 				//tratar Datos de empleadores
+						 				System.out.println(key2);
+						 				System.out.println(aux.get(key2));
+						 				System.out.println(aux.get(key2).getClass());
+//						 				tratar datos de afiliado
+//						 				tratar Datos de empleadores
 						 				if("afiliado".equals(key2) && aux.get(key2) instanceof JSONObject)
 						 				{
-//						 				System.out.println("dentro del afiliados");
+						 				System.out.println("dentro del afiliados");
 						 				JSONObject afilRpt = aux.getJSONObject(key2);
-//						 				System.out.println(afilRpt);
+						 				System.out.println(afilRpt);
 //						 				JSONArray afilRt = aux.getJSONArray(key2);
 						 				afilRpt = TransDatosAfili(afilRpt);
 						 				auxData.put(key2,afilRpt);
@@ -99,6 +103,17 @@ private JSONObject trabajo;
 						 				pacsRt = TransDatosPacs(pacsRt);
 						 				auxData.put(key2,pacsRt);
 						 				}
+						 				if("empleadores".equals(key2) && aux.get(key2) instanceof JSONObject)
+						 				{
+						 				System.out.println("dentro afiliadores");
+						 				JSONObject empAfAx = aux.getJSONObject(key2);
+						 				System.out.println(empAfAx);
+//						 				JSONArray afilRt = aux.getJSONArray(key2);
+						 				empAfAx = TransDatosEmpresaAfiliado(empAfAx);
+						 				auxData.put(key2,empAfAx);
+						 				}
+						 				
+						 				
 						 			
 						 			}
 						 			fnData.put(auxData);
@@ -106,7 +121,7 @@ private JSONObject trabajo;
 					 }
 					 else
 					 {
-//						 System.out.println("no esw objeto");
+						 System.out.println("no esw objeto");
 					 }
 					 
 				 }
@@ -125,6 +140,28 @@ private JSONObject trabajo;
 		return resp;
 	}
 
+	private JSONObject TransDatosEmpresaAfiliado(JSONObject empAfAx) {
+		// TODO Auto-generated method stub
+		JSONArray auxComp = empAfAx.getJSONArray("companias");
+		JSONArray resCom = new JSONArray();
+		JSONObject respEmpres = new JSONObject();
+//		System.out.println(auxComp);
+		for (int i=0 ; i<auxComp.length();i++) {
+			JSONObject resEMp = new JSONObject();
+//			System.out.println(auxComp.get(i));
+			JSONObject auxEmp = auxComp.getJSONObject(i);
+			resEMp.put("nombre", auxEmp.get("nombre"));
+			String tDoc = convertirEstado(auxEmp.get("tipoDocumento").toString(), tDocu);
+			resEMp.put("tipoDocumento", tDoc);
+			resEMp.put("numberoDocumento",auxEmp.get("numberoDocumento"));
+			String estad = convertirEstado(auxEmp.get("estado").toString(), estado);
+			resEMp.put("estado", estad);
+			resCom.put(resEMp);
+		}
+		respEmpres.put("companias", resCom);
+		return respEmpres;
+	}
+
 	private JSONObject TransDatosAfili(JSONObject afilRpt) {
 		// TODO Auto-generated method stub
 		JSONObject resAfil = new JSONObject();
@@ -132,12 +169,15 @@ private JSONObject trabajo;
 		JSONObject auxMulSer = afilRpt.getJSONObject("tarjetaMultiservicios"); //auxiliar tarjeta multi
 		JSONObject auxMtPa = auxMulSer.getJSONObject("metodoPago");
 		resAfil.put("nombre", afilRpt.get("primerNombre")+" "+afilRpt.get("segundoNombre")+" "+afilRpt.get("primerApellido")+" "+afilRpt.get("segundoApellido"));
+		String TipoDoc = convertirEstado(afilRpt.get("tipoDocumento").toString(), tDocu);
+		resAfil.put("tipoDocumento", TipoDoc);
+
+		resAfil.put("nombreAl", afilRpt.get("primerNombre")+" "+afilRpt.get("primerApellido"));
 		resAfil.put("fechaNacimiento", afilRpt.get("fechaNacimiento"));
 //		System.out.println(jsAuxAf);
 		resAfil.put("fechaAfiliacion", jsAuxAf.get("fechaAfiliacion"));
 		String estd = convertirEstado(afilRpt.get("estado").toString(), estado);
 		resAfil.put("estado",estd);
-		resAfil.put("fechaAfiliacion", jsAuxAf.get("fechaRetiro"));
 		resAfil.put("categoria", jsAuxAf.get("categoria"));
 		String tipoTr = convertirEstado(jsAuxAf.get("tipoTrabajador").toString(), trabajo);
 		resAfil.put("tipoTrabajador", tipoTr);
@@ -171,21 +211,30 @@ private JSONObject trabajo;
 	private JSONArray TransDatosPacs(JSONArray pacs) {
 		// TODO Auto-generated method stub
 		JSONArray respPacs = new JSONArray();
+		JSONObject JsoBenf = new JSONObject();
 			for(int i=0;i<pacs.length();i++)
 			{
+				try {
 //				JsonObject  = new JsonObject();
-				JSONObject JsoBenf = new JSONObject();
+			
 //				JsoBenf.addProperty("token", currentTokenNo.replaceAll("\"","").replaceAll("/","")); 
 				JSONObject auxPac = pacs.getJSONObject(i);
 //				JsoBenf.put("documento", "1234");
 //				System.out.println(auxPac.toString());		
 				JsoBenf.put("numeroDocumento", (String) auxPac.get("numeroDocumento"));
+				String TipoDoc = convertirEstado(auxPac.get("tipoDocumento").toString(), tDocu);
+				JsoBenf.put("tipoDocumento", TipoDoc);
 				JsoBenf.put("bNombre", auxPac.get("primerNombre") +" "+auxPac.get("segundoNombre")+" "+auxPac.get("apellido")+" "+auxPac.get("segundoApellido"));
+				JsoBenf.put("bNombreAl", auxPac.get("primerNombre") +" "+auxPac.get("apellido"));
 				JSONObject relacion = auxPac.getJSONObject("relacion");
 				JsoBenf.put("relacion", (String) relacion.get("descripcion"));
 				JsoBenf.put("genero", auxPac.get("genero").toString().equals("1")?"Femenino":"Masculino");
-				try {
-					convertirFecha(auxPac.get("fechaNacimiento").toString());
+				convertirFecha(auxPac.get("fechaNacimiento").toString());
+				JsoBenf.put("fechaNacimineto", auxPac.get("fechaNacimiento"));
+				JsoBenf.put("fechaInicioVigencia", auxPac.get("fechaInicioVigencia"));
+				String estd = convertirEstado(auxPac.get("estado").toString(), estado);
+				JsoBenf.put("estado", estd);
+				JsoBenf.put("discapacidad", auxPac.getString("discapacidad").equals("null")?"":auxPac.getString("discapacidad"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -193,11 +242,7 @@ private JSONObject trabajo;
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				JsoBenf.put("fechaNacimineto", auxPac.get("fechaNacimiento"));
-				JsoBenf.put("fechaInicioVigencia", auxPac.get("fechaInicioVigencia"));
-				String estd = convertirEstado(auxPac.get("estado").toString(), estado);
-				JsoBenf.put("estado", estd);
-				JsoBenf.put("discapacidad", auxPac.getString("discapacidad").equals("null")?"":auxPac.getString("discapacidad"));
+				
 				
 				
 //				System.out.println(JsoBenf);
@@ -212,11 +257,12 @@ private JSONObject trabajo;
 	public void convertirFecha(String fecha) throws  ParseException
 	{
 		System.out.println(fecha);
-		String fh = "1953-09-25";
-		SimpleDateFormat formato = new SimpleDateFormat("DD-MM-YYYY"); 
-		Date fecha1 = formato.parse(fh);
+		Date fh = new Date();
+		System.out.println(Locale.getDefault());
+		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy",Locale.getDefault()); 
+		String fecha1 = formato.format(fh);
 		System.out.println("dentro de convertir fecha");
-		System.out.println(fecha1.toString());
+		System.out.println(fecha1);
 	}
 	
 	public String convertirEstado(String estadoAp, JSONObject estYml)
